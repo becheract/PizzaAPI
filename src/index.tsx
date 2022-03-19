@@ -15,13 +15,13 @@ ReactDOM.render(
   <React.StrictMode>
     {/* making the store available to the react component*/}
     <Provider store={store}>
-      <BrowserRouter>
+    <BrowserRouter>
       <Routes>
-      <Route path='/' element={<Home/>}> </Route>
-      <Route path='/get-your-pizza' element={<GetYourPizza/>}></Route>
-      <Route path='/orders' element={<Orders/>}></Route>
-    </Routes>
-      </BrowserRouter>
+        <Route path='/' element={<Home/>}> </Route>
+        <Route path='/get-your-pizza' element={<GetYourPizza/>}></Route>
+        <Route path='/orders' element={<Orders/>}></Route>
+      </Routes>
+    </BrowserRouter>
     </Provider>
   </React.StrictMode>,
 
