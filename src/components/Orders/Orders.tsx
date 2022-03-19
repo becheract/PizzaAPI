@@ -1,11 +1,11 @@
 import React from 'react'
 import '../../styles/App.css'
-import { connect, useSelector } from 'react-redux'
+import { connect, useSelector, RootStateOrAny } from 'react-redux'
 
 export const Orders = () => {
 
   //retrieves data from the store
-  const pizzaForm = useSelector((state => state))
+  const pizzaForm = useSelector((state : RootStateOrAny ) => state.pizza.pizzaOrder)
   console.log(pizzaForm);
   return (
       <form className="w-full max-w-lg mx-auto p-5">
