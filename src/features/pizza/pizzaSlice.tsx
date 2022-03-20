@@ -17,7 +17,9 @@ export const pizzaSlice = createSlice({
     initialState,
     //reducers are functions that manage state
     reducers: {
-
+        onchange : (state) => {
+            
+        }
     },
 })
 
