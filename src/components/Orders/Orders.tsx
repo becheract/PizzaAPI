@@ -1,12 +1,26 @@
 import React, {useState } from 'react'
 import '../../styles/App.css'
-import { connect, useSelector, TypedUseSelectorHook } from 'react-redux'
+import { connect, useDispatch  } from 'react-redux'
 import { useAppSelector } from '../../app/hooks';
+import { onchange } from '../../features/pizza/pizzaSlice';
 
 export const Orders = () => {
+  const dispatch = useDispatch();
   //retrieves data from the store
   //using a hook for the useSelector
-  const pizzaForm = useAppSelector((state) => state.pizza.pizzaOrder)
+  interface Order { 
+    firstname : string;
+    lastname : string;
+    address : string;
+    style : string;
+    cheese : boolean;
+    crust : string;
+  }
+
+ 
+  
+  const pizzaForm = useAppSelector((state) => state.pizza)
+
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
   const [address, setAddress] = useState("");
@@ -14,8 +28,24 @@ export const Orders = () => {
   const [cheese, setCheese] = useState(false);
   const [crust, setCrust] = useState('Original Crust');
 
+  const obj = {
+    firstname : first,
+    lastname : last,
+    address : address,
+    style : style,
+    cheese : cheese,
+    crust : crust,
+  }
 
-  console.log(pizzaForm);
+  console.log(obj)
+  
+  const handleSubmit = ( e : any ) => {
+    e.preventDefault();
+    dispatch(onchange(obj));
+  } 
+
+
+ 
   return (
       <form className="w-full max-w-lg mx-auto p-5">
       <div>
@@ -91,7 +121,7 @@ export const Orders = () => {
       </div>
     </div>
   </div>
-  <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+  <button onClick={handleSubmit} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
     Submit
   </button>
 </form>
