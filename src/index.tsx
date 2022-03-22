@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
@@ -10,12 +8,14 @@ import { BrowserRouter, Route,Routes } from "react-router-dom";
 import Home from './components/Home/Home';
 import GetYourPizza from './components/GetYourPizza/GetYourPizza';
 import Orders from './components/Orders/Orders';
+import NavBar from './components/NavBar/NavBar';
 ReactDOM.render(
 
   <React.StrictMode>
     {/* making the store available to the react component*/}
     <Provider store={store}>
     <BrowserRouter>
+    <NavBar/>
       <Routes>
         <Route path='/' element={<Home/>}> </Route>
         <Route path='/get-your-pizza' element={<GetYourPizza/>}></Route>

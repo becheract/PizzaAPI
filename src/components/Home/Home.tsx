@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div>
      <h1> Welcome to Pzza</h1>
-    <Link to ="/orders">Orders Page</Link>
+
     </div>
   )
 }
