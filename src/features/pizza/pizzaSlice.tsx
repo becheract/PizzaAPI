@@ -15,7 +15,7 @@ export const pizzaSlice = createSlice({
                ...state.incomingOrder,
                action.payload
            ];
-           state.incomingOrder = newOrder
+           state.incomingOrder = newOrder 
         },
         setOrders : (state, action) => {
             
