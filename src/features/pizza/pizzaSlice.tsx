@@ -2,14 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 //the initial state of the pizza 🍕
 const initialState = { 
-    incomingOrder : {
-        firstname: '',
-        lastname: '',
-        address: '',
-        style : '',
-        crust: '',
-        extraCheese: false,   
-    }
+    incomingOrder : [],
 }
 
 export const pizzaSlice = createSlice({
@@ -17,14 +10,20 @@ export const pizzaSlice = createSlice({
     initialState,
     //reducers are functions that manage state
     reducers: {
-        order : (state, action) => {
-            console.log('action', action)
-            state.incomingOrder = action.payload
-            console.log(state.incomingOrder);
+        addOrder : (state, action) => {
+           const newOrder = [ 
+               ...state.incomingOrder,
+               action.payload
+           ];
+           state.incomingOrder = newOrder
+        },
+        setOrders : (state, action) => {
+            
         }
+
     },
 })
 
 export default pizzaSlice.reducer
 //exporting this action
-export const { order } = pizzaSlice.actions
+export const { addOrder } = pizzaSlice.actions

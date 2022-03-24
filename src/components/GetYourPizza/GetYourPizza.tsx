@@ -1,32 +1,43 @@
-import React, {useState } from 'react'
+import  {useState, useEffect } from 'react'
 import '../../styles/App.css'
 import { connect, useDispatch  } from 'react-redux'
 import { useAppSelector } from '../../app/hooks';
-import { order } from '../../features/pizza/pizzaSlice';
+import { addOrder } from '../../features/pizza/pizzaSlice';
+import { v4 as uuidv4 } from 'uuid';
+import api from '../../features/pizza/api';
 
 export const Orders = () => {
   //creating dispatch variable
   const dispatch = useDispatch();
- 
+  //for saving orders
+  const [saving, setSaving] = useState(false);
   //use selector retrieves data from the store
-  const pizzaForm = useAppSelector((state) => state.pizza)
+  const pizzaForm = useAppSelector((state) => state.pizza.incomingOrder)
   //will get the user input
-  const [first, setFirst] = useState("");
-  const [last, setLast] = useState("");
+  const [name, setName] = useState("");
   const [address, setAddress] = useState("");
-  const [style, setStyle] = useState('Hawaiian');
+  const [style] = useState(['Hawaiian', 'Pepperoni', 'Canadian' , 'Supreme', 'Cheese' , 'Margherita'] );
+  const[selectedCrust, setSelectedCrust] = useState("")
+  const[selectedStyle, setSelectedStyle] = useState("")
   const [cheese, setCheese] = useState(false);
-  const [crust, setCrust] = useState('Original Crust');
+  const [crust] = useState(['Original Crust', 'Thin Crust', 'Gluten-Free Crust']);
+  //array of fields which will validate user input
+  const [fields, setFields ] = useState({
+    nameErr : name, 
+    addressErr : address, 
+    styleErr : selectedStyle, 
+    crustErr : selectedCrust});
 
-
+  //error message will output which inputs are empty 
+  const [errMsg, setErrMsg] = useState([])
   //object will hold the inputs of the order
   const obj = {
-    firstname : first,
-    lastname : last,
-    address : address,
-    style : style,
+    id : uuidv4(),
+    style : selectedStyle,
+    crust : selectedCrust,
     extraCheese : cheese,
-    crust : crust,
+    name : name,
+    address : address,
   }
 
   console.log(obj)
@@ -34,64 +45,75 @@ export const Orders = () => {
   //once submitted it will send the order object to the redux reducer called 'order'
   const handleSubmit = ( e : any ) => {
     e.preventDefault();
-    dispatch(order(obj));
-    //clearing input 
-    setFirst("");
-    setLast("");
-    setAddress("");
-    setStyle("");
-    setCheese(false);
-    setCrust("");
+    //for loop through the fields and check if they are empty
+
+      // if(element === "") {
+      //   setErrMsg([...errMsg, element])
+      // }
+
+    //loading
+    setSaving(true);
+    api.post('/orders', obj)
+    .then((res) => {
+      if(res.status === 201) {
+        dispatch(addOrder(obj));
+        //clearing input 
+        setName("")
+        setAddress("");
+        setSelectedCrust("");
+        setSelectedStyle("");
+        setCheese(false);
+        //setting loading to false
+        setSaving(false)
+      }
+    }).catch(error => console.log(error))
+
   } 
 
 
  
   return (
-      <form className="w-full max-w-lg mx-auto p-5">
+  <form className="w-full max-w-lg mx-auto p-5" onSubmit={handleSubmit}>
+    
+    {saving && ( 
+      <div className='saving'>Saving...</div> 
+    )}
       <div>
         <h1 className='text-3xl font-bold underline'>Order Your Pizza Today!</h1>
       </div>
 
-  <div className="flex flex-wrap -mx-3 mb-6">
+  <div className="flex flex-wrap -mx-3 mb-6 ">
 
     <div className="w-full md:w-1/2 px-3 py-2">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
-        First Name
+         Name
       </label>
       <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-      id="grid-last-name" type="text" placeholder="Doe" value={first} onChange={e => setFirst(e.currentTarget.value)}/>
+      id="grid-last-name" type="text" placeholder="John Doe" value={name} onChange={e => setName(e.currentTarget.value)}/>
     </div>
 
-    <div className="w-full md:w-1/2 px-3">
-      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
-        Last Name
-      </label>
-      <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-      id="grid-last-name" type="text" placeholder="Doe" value={last} onChange={e => setLast(e.currentTarget.value)}/>
-    </div>
-
-    <div className="w-full md:w-1/2 px-3">
+    <div className="w-full md:w-1/2 px-3 py-2">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-address">
         Address
       </label>
-      <input onChange={e => setAddress(e.currentTarget.value)} value={address} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe"/>
+      <input onChange={e => setAddress(e.currentTarget.value)} value={address} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+      id="grid-last-address" type="text" placeholder="Address"/>
     </div>
   </div>
 
-  <div className="flex flex-wrap -mx-3 mb-2">
+  <div className="flex flex-wrap -mx-3 mb-6 ">
 
-    <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+    <div className="w-full md:w-1/2 px-3 py-2">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">
         Style
       </label>
       <div className="relative">
-        <select  onChange={e => setStyle(e.currentTarget.value)} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-          <option value={'Hawaiian'}>Hawaiian</option>
-          <option value={'Pepperoni'}>Pepperoni</option>
-          <option value={'Canadian'}>Canadian</option>
-          <option value={'Supreme'}>Supreme</option>
-          <option value={'Cheese'}>Cheese</option>
-          <option value={'Margherita'}>Margherita</option>
+        <select value={selectedStyle} onChange={e => setSelectedStyle(e.target.value)} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+          <option>Select Style Type</option>
+          {style && 
+          style.map((i, index) =>{
+            return <option key={index}>{i}</option>
+          })}
         </select>
         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
           <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -105,25 +127,28 @@ export const Orders = () => {
     </div>
       
     </div>
-    <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+    <div className="w-full md:w-1/2 px-3 py-2">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">
         Crust
       </label>
       <div className="relative">
-        <select onChange={e => setCrust(e.currentTarget.value)}  className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-          <option value={'Original Crust'}>Original Crust</option>
-          <option value={'Thin Crust'}>Thin Crust</option>
-          <option value={'Gluten-Free Crust'}>Gluten-Free Crust</option>
+        <select value={selectedCrust} onChange={e => setSelectedCrust(e.target.value)}  className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+          <option>Select Crust Type</option>
+          {crust && 
+          crust.map((i, index) => {
+            return <option key={index}>{i}</option>
+          }) }
         </select>
         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
           <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
         </div>
       </div>
     </div>
-  </div>
-  <button onClick={handleSubmit} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+    <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded w-48 mx-auto mt-5">
     Submit
   </button>
+  </div>
+
 </form>
  
   )
