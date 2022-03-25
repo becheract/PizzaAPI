@@ -35,12 +35,12 @@ export const Orders = () => {
     id : uuidv4(),
     style : selectedStyle,
     crust : selectedCrust,
-    extraCheese : cheese,
+    cheese : cheese,
     name : name,
     address : address,
   }
 
-  console.log(obj)
+
   
   //once submitted it will send the order object to the redux reducer called 'order'
   const handleSubmit = ( e : any ) => {

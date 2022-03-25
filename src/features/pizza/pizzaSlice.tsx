@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 //the initial state of the pizza 🍕
 const initialState = { 
-    incomingOrder : [],
+    incomingOrder : [] as Array<Object>,
 }
 
 export const pizzaSlice = createSlice({
@@ -11,14 +11,12 @@ export const pizzaSlice = createSlice({
     //reducers are functions that manage state
     reducers: {
         addOrder : (state, action) => {
-           const newOrder = [ 
-               ...state.incomingOrder,
-               action.payload
-           ];
-           state.incomingOrder = newOrder 
-        },
+            state.incomingOrder = [...state.incomingOrder, action.payload]
+            console.log(state.incomingOrder)
+        },  
         setOrders : (state, action) => {
-            
+           state.incomingOrder = action.payload
+           console.log(state.incomingOrder)
         }
 
     },
@@ -26,4 +24,4 @@ export const pizzaSlice = createSlice({
 
 export default pizzaSlice.reducer
 //exporting this action
-export const { addOrder } = pizzaSlice.actions
+export const { addOrder, setOrders } = pizzaSlice.actions
