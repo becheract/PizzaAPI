@@ -17,6 +17,9 @@ export const pizzaSlice = createSlice({
         setOrders : (state, action) => {
            state.incomingOrder = action.payload
            console.log(state.incomingOrder)
+        },
+        deleteOrder : ( state, action) => {
+            console.log(action.payload)
         }
 
     },
@@ -24,4 +27,4 @@ export const pizzaSlice = createSlice({
 
 export default pizzaSlice.reducer
 //exporting this action
-export const { addOrder, setOrders } = pizzaSlice.actions
+export const { addOrder, setOrders, deleteOrder } = pizzaSlice.actions
