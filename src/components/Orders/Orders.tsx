@@ -13,11 +13,15 @@ type order = {
   crust: string; 
   cheese: boolean;
 }
+
+
+
 export default function Orders() {
   //redux useSelector hook
 	const tasks = useAppSelector((state) => state.pizza.incomingOrder);
   
   const [ loading, setLoading] = useState(false); 
+  const [ deleting, setDeleting ] = useState(true); 
 	//redux dispatch hook
 	const dispatch = useDispatch()
     //load data from api
@@ -36,9 +40,11 @@ export default function Orders() {
     const deleteOrderFunc = (id : string) => {
       console.log(id);
       api.delete(`/orders/${id}`)
-      .then((res) => {
+      .then( async (res) => {
         if(res.status === 200) {
-          dispatch(deleteOrder(id));
+          
+          await dispatch(deleteOrder(id));
+          setDeleting(true);
         }
       }).catch(error => console.log(error))
   
@@ -66,6 +72,7 @@ export default function Orders() {
           <button onClick={() => deleteOrderFunc(orderRecieved.id)} className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded w-48 mx-auto mt-5">
              Delete
           </button>
+
           </div>
           )
         })}

@@ -6,6 +6,10 @@ module.exports = {
     extend: {
       colors: {
         'redPizza': '#FB2626',
+        'redHover' : '#F55D5D',
+        'MainRed' : '#D21817',
+        'SecondRed' : '#FF413B',
+        'navRed' : '#FE4038'
       },
     },
   },
