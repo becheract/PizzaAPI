@@ -9,6 +9,7 @@ import Home from './components/Home/Home';
 import GetYourPizza from './components/GetYourPizza/GetYourPizza';
 import Orders from './components/Orders/Orders';
 import NavBar from './components/NavBar/NavBar';
+import 'flowbite';
 ReactDOM.render(
 
   <React.StrictMode>

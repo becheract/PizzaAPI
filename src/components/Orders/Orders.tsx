@@ -34,11 +34,11 @@ export default function Orders() {
     },[])
     
     const deleteOrderFunc = (id : string) => {
+      console.log(id);
       api.delete(`/orders/${id}`)
       .then((res) => {
         if(res.status === 200) {
           dispatch(deleteOrder(id));
-
         }
       }).catch(error => console.log(error))
   

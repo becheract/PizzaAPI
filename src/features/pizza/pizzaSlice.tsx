@@ -18,8 +18,10 @@ export const pizzaSlice = createSlice({
            state.incomingOrder = action.payload
            console.log(state.incomingOrder)
         },
-        deleteOrder : ( state, action) => {
-            console.log(action.payload)
+        deleteOrder : (state, action) => {
+            state.incomingOrder = [...state.incomingOrder]
+            
+      
         }
 
     },

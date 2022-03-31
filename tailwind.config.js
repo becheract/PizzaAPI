@@ -1,7 +1,13 @@
 module.exports = {
-  content: ["./src/**/*.{html,js,tsx}"],
+  content: ["./node_modules/flowbite/**/*.js",],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'redPizza': '#FB2626',
+      },
+    },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ],
 }
