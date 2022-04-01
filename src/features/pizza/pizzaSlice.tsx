@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { stat } from "fs";
+import { FC } from 'react';
 
 //the initial state of the pizza 🍕
 const initialState = { 
@@ -20,17 +21,19 @@ export const pizzaSlice = createSlice({
     //reducers are functions that manage state
     reducers: {
         addOrder : (state, action) : void => {
+            //adds old array and appends payload to the olad array
             state.incomingOrder = [...state.incomingOrder, action.payload]
             console.log(state.incomingOrder)
         },  
         setOrders : (state, action) : void => {
+            //sets state to payload
            state.incomingOrder = action.payload
            console.log(state.incomingOrder)
         },
         deleteOrder : (state, action) : void => {
-            let filtered = state.incomingOrder.filter(
-                
-                (order : any) => order.id !== action.payload);
+            //filter state
+            let filtered = state.incomingOrder.filter
+            ((order: any) => order.id !== action.payload);
       
                 state.incomingOrder = filtered
         },

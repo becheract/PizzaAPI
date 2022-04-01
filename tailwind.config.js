@@ -3,6 +3,10 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    fontFamily: {
+      'nunito' : ['sans-serif', 'Nunito'],
+      'quickSand' : ['sans-serif', 'Quicksand'],
+    },
     extend: {
       colors: {
         'redPizza': '#FB2626',
