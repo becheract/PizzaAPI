@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 interface ButtonProps {
   primary?: boolean;
@@ -19,9 +20,10 @@ export const Button = (
   return (
     <button
       {...props}
-      className={`${colorClasses} font-bold py-2 px-4 rounded disabled:bg-green-300 ${props.className}`}
+      className={`${colorClasses} mt-5 py-4 px-4 rounded text-xs w-36 h-12 md:w-44 ${props.className}`}
     >
       {props.children}
+
     </button>
   );
 };

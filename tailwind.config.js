@@ -4,8 +4,8 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'nunito' : ['sans-serif', 'Nunito'],
-      'quickSand' : ['sans-serif', 'Quicksand'],
+      'Nunito' : ['Nunito', 'sans-serif'],
+      'Quicksand' : ['Quicksand', 'sans-serif'],
     },
     extend: {
       colors: {
@@ -16,6 +16,8 @@ module.exports = {
         'navRed' : '#FE4038'
       },
     },
+
+
   },
   plugins: [
     require('flowbite/plugin')
