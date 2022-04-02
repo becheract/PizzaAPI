@@ -8,7 +8,7 @@ export default function NavBar() {
 <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
 <div className="container flex flex-wrap justify-between items-center mx-auto">
 <a  className="flex items-center">
-<span className="self-center text-xl font-semibold whitespace-nowrap text-redPizza font-Quicksand">Pzza</span>
+<span className="self-center text-xl font-semibold whitespace-nowrap text-redPizza font-Quicksand"><Link to='/'>Pzza</Link></span>
 </a>
 <button data-collapse-toggle="mobile-menu" type="button" className="inline-flex items-center p-2 ml-3 text-sm  rounded-lg md:hidden  focus:outline-none focus:ring-2" aria-controls="mobile-menu" aria-expanded="false">
 <span className="sr-only">Open main menu</span>

@@ -11,7 +11,7 @@ export default function Home() {
       <div className="w-4/5 mx-auto">
         <h1 className="p-5 font-light text-3xl text-SecondRed font-Nunito">Get Exceptional Pizza</h1>
         <p className="p-5 text-SecondRed font-Quicksand">Pizza (Italian: [ˈpittsa], Neapolitan: [ˈpittsə]) is a dish of Italian origin</p>
-        <Button  className="mb-4 md:w-2/12 md:ml-auto uppercase"><Link to='/get-your-pizza'>Get Your Pizza</Link></Button>
+        <Link to='/get-your-pizza'><Button  className="mb-4 md:w-2/12 md:ml-auto uppercase">Get Your Pizza</Button></Link>
       </div>
       </div>
     </div>

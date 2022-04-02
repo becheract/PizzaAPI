@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../app/hooks';
 import api from '../../features/pizza/api';
 import {  setOrders , deleteOrder} from '../../features/pizza/pizzaSlice';
+import {Button} from '../Button/Button'
+
 
 type order = {
   name: string;
@@ -52,7 +54,6 @@ export default function Orders() {
   return (
     
     <div>
-       Orders API
        {!loading ? <h1> 'loading' </h1> : 
       tasks.map(( order : any , i) => {
 
@@ -64,15 +65,26 @@ export default function Orders() {
           address: order.address,
           style: order.style,
         }
-
+        console.log(order.cheese)
           return (
-          <div key={i} className={'border-8 border-sky-500 gap-5'}>
-            <h3>Order ID : {orderRecieved.id}</h3>
-            <h3>Order Name: {orderRecieved.name}</h3>
-          <button onClick={() => deleteOrderFunc(orderRecieved.id)} className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded w-48 mx-auto mt-5">
-             Delete
-          </button>
+          <div key={i} className={'border shadow m-5 rounded p-5 flex column'}>
 
+            <div>
+              <h3 className="font-medium text-sm">Order ID:<span className="font-Quicksand text-xs"> {orderRecieved.id} </span></h3>
+              <h3 className="font-medium text-sm">Order Name:<span className="font-Quicksand text-xs"> {orderRecieved.name}</span></h3>
+              <h3 className="font-medium text-sm">Order address:<span className="font-Quicksand text-xs"> {orderRecieved.address}</span></h3>
+            </div>
+
+            <div>
+              <h3 className="font-medium text-sm">Order Crust: <span className="font-Quicksand text-xs">{orderRecieved.crust}</span></h3>
+              <h3 className="font-medium text-sm">Order Cheese:<span className="font-Quicksand text-xs">{orderRecieved.cheese}</span> </h3>
+              <h3 className="font-medium text-sm">Order Style:<span className="font-Quicksand text-xs"> {orderRecieved.style}</span></h3>
+            </div>
+
+
+            <div className="">
+              <Button onClick={() => deleteOrderFunc(orderRecieved.id)} className="uppercase h-10 w-20 flex m-1 leading-3 font-Quicksand"><p className="m-auto text-center">Delete</p></Button>
+            </div>
           </div>
           )
         })}
