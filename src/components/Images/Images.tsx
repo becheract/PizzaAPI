@@ -5,6 +5,7 @@ import Pepperoni from '../Images/Pepperoni.png'
 import Cheese from '../Images/Cheese.png';
 import Hawaiian from '../Images/Hawaiian.png';
 import Supreme from '../Images/Supreme.png';
+
 //create a interface for props
 interface style {
     style: string
@@ -12,25 +13,28 @@ interface style {
 
 
 export default function Images(props : style) {
-    //array of options
-    let style : string[] = ['Margherita', 'Hawaiian', 'Pepperoni', 
-    'Canadian' , 'Supreme', 'Cheese'];
+    //key value array
+    let style :  any =  {
+     'Margherita' : Margherita,
+     'Hawaiian': Hawaiian, 
+      'Pepperoni': Pepperoni,
+      'Canadian': Canadian,
+      'Supreme': Supreme,
+      'Cheese': Cheese};
 
-    const [pizzaImg, setPizzaImg] = useState('')
+    const [pizzaImg, setPizzaImg] = useState<any>()
     //loop through options and return image based
     //on that option
     useEffect(() => {
-        style.map((pizzaStyle : string, i : number) => {
-            if(props.style == pizzaStyle){
-                
-                setPizzaImg(Supreme);
-            }
-        })  
+        for(const [key, value] of Object.entries(style)){
+            if(props.style == key)
+            setPizzaImg(value)
+        }
  
     }, [])
 
 
     return (
-        <img src={pizzaImg}  alt="Pizza Icon" className="w-"/>
+        <img src={pizzaImg}  alt="Pizza Icon" className="mx-auto"/>
       )
 }

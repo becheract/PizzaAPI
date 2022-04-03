@@ -89,7 +89,7 @@ export default function Orders() {
 
             <div className="flex flex-wrap border h-100 justify-center column w-1/4 text-center">
             {/* pass the syle as a prop */}
-              <div className="h-70 border w-full ">
+              <div className="h-70 border w-full">
                 <Images style={orderRecieved.style}></Images>
               </div>
 
