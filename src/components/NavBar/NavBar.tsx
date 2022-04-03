@@ -7,9 +7,9 @@ export default function NavBar() {
 
 <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
 <div className="container flex flex-wrap justify-between items-center mx-auto">
-<a  className="flex items-center">
-<span className="self-center text-xl font-semibold whitespace-nowrap text-redPizza font-Quicksand"><Link to='/'>Pzza</Link></span>
-</a>
+<Link to='/' className="flex items-center">
+<span className="self-center text-xl font-semibold whitespace-nowrap text-redPizza font-Quicksand">Pzza</span>
+</Link>
 <button data-collapse-toggle="mobile-menu" type="button" className="inline-flex items-center p-2 ml-3 text-sm  rounded-lg md:hidden  focus:outline-none focus:ring-2" aria-controls="mobile-menu" aria-expanded="false">
 <span className="sr-only">Open main menu</span>
 <svg className="w-6 h-6 text-redPizza" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>

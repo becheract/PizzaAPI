@@ -35,6 +35,6 @@ export default function Images(props : style) {
 
 
     return (
-        <img src={pizzaImg}  alt="Pizza Icon" className="mx-auto"/>
+        <img src={pizzaImg}  alt="Pizza Icon" className="mx-auto w-10 "/>
       )
 }
