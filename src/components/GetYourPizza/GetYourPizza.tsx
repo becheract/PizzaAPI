@@ -75,7 +75,7 @@ export const Orders = () => {
 
  
   return (
-  <form className="w-full max-w-lg mx-auto p-5 border-2  shadow-lg	" onSubmit={handleSubmit}>
+  <form className="w-full max-w-lg mx-auto p-5 border-2  shadow-lg" onSubmit={handleSubmit}>
     <img src={pizza}  alt="Logo" className="w-1/5 h-45 mx-auto"/>
     {saving && ( 
       <div className='saving'>Saving...</div> 
@@ -142,7 +142,7 @@ export const Orders = () => {
        
       </div>
     </div>
-    <Button  className="mb-4 md:w-2/12 md:ml-auto uppercase mx-auto ">Submit</Button>
+    <Button  className="mb-4 md:w-2/12 md:ml-auto uppercase mx-auto">Submit</Button>
  
   </div>
 

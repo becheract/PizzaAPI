@@ -7,7 +7,7 @@ export default function Home() {
     <div className="container flex justify-center column w-screen mx-auto my-10">
       <div className="text-center w-screen">
 
-      <img src={pizza}  alt="Logo" className="w-3/5 h-45 mx-auto"/>
+      <img src={pizza}  alt="Logo" className="w-3/5 h-45 mx-auto lg:w-4/12"/>
       <div className="w-4/5 mx-auto">
         <h1 className="p-5 font-light text-3xl text-SecondRed font-Nunito">Get Exceptional Pizza</h1>
         <p className="p-5 text-SecondRed font-Quicksand">Pizza (Italian: [ˈpittsa], Neapolitan: [ˈpittsə]) is a dish of Italian origin</p>
