@@ -7,6 +7,8 @@ import { v4 as uuidv4 } from 'uuid';
 import api from '../../features/pizza/api';
 import pizza from '../../assets/pizza.png'
 import {Button} from '../Button/Button'
+//modal 
+import ReactModal from 'react-modal';
 
 export const Orders = () => {
   //creating dispatch variable
@@ -24,11 +26,8 @@ export const Orders = () => {
   const [cheese, setCheese] = useState(false);
   const [crust] = useState(['Original Crust', 'Thin Crust', 'Gluten-Free Crust']);
   //array of fields which will validate user input
-  const [fields, setFields ] = useState({
-    nameErr : name, 
-    addressErr : address, 
-    styleErr : selectedStyle, 
-    crustErr : selectedCrust});
+  const [fields, setFields ] = useState([
+ name, address, selectedStyle, selectedCrust]);
 
   //error message will output which inputs are empty 
   const [errMsg, setErrMsg] = useState([])
@@ -47,7 +46,10 @@ export const Orders = () => {
   //once submitted it will send the order object to the redux reducer called 'order'
   const handleSubmit = ( e : any ) => {
     e.preventDefault();
-    //for loop through the fields and check if they are empty
+    //Map through the fields 
+    fields.forEach((field, i) => {
+      console.log(field)
+    })
 
       // if(element === "") {
       //   setErrMsg([...errMsg, element])
@@ -77,9 +79,38 @@ export const Orders = () => {
   return (
   <form className="w-full max-w-lg mx-auto p-5 border-2  shadow-lg" onSubmit={handleSubmit}>
     <img src={pizza}  alt="Logo" className="w-1/5 h-45 mx-auto"/>
-    {saving && ( 
-      <div className='saving'>Saving...</div> 
-    )}
+    {/* modal will open */}
+    <ReactModal isOpen={saving} 
+    shouldCloseOnOverlayClick={true} 
+    ariaHideApp={false}
+    closeTimeoutMS={0.5}
+    style={ {  overlay: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(255, 255, 255, 0.55)',
+      backdropFilter: 'blur( 3px )',
+      WebkitBackdropFilter: 'blur( 3px )',
+    },
+    content: {
+      display: 'flex',
+      margin: 'auto',
+      border: '1px solid #ccc',
+      background: 'rgba( 210, 191, 191, 0.3 )',
+      boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
+      overflow: 'auto',
+      borderRadius: '10px',
+      outline: 'none',
+      padding: '20px',
+      width: '200px',
+      height: '100px'
+    }
+    }}>
+      <p className='mx-auto my-auto font-Quicksand block tracking-wide text-gray-700 text-xs font-bold'>Order Recieved!</p>
+    </ReactModal>
+
       <div>
         <h1 className="p-5 font-light text-3xl text-SecondRed font-Nunito text-center">Get your Pizza</h1>
       </div>
