@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Route,Routes } from "react-router-dom";
 //importing components
 import Home from './components/Home/Home';
-import GetYourPizza from './components/GetYourPizza/GetYourPizza';
+import Form from './components/GetYourPizza/Form';
 import Orders from './components/Orders/Orders';
 import NavBar from './components/NavBar/NavBar';
 import 'flowbite';
@@ -19,7 +19,7 @@ ReactDOM.render(
     <NavBar/>
       <Routes>
         <Route path='/' element={<Home/>}> </Route>
-        <Route path='/get-your-pizza' element={<GetYourPizza/>}></Route>
+        <Route path='/get-your-pizza' element={<Form/>}></Route>
         <Route path='/orders' element={<Orders/>}></Route>
       </Routes>
     </BrowserRouter>
