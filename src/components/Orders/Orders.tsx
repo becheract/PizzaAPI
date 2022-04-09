@@ -68,9 +68,9 @@ export default function Orders() {
 
       {/* when loading is set to false then show loading icon */}
        {!loading ? 
-       <div className="flex mx-auto column">
-       <div>
-       <img className="text-center  mx-auto" src={loadingGif} width="50%" height="50%"/>
+       <div className="flex mx-auto text-center column">
+       <div className="mx-auto ">
+       <img className="text-center mx-auto" src={loadingGif} width="50%" height="50%"/>
        <h1 className='text-center font-Quicksand text-xl font-black'>Loading</h1>
        </div>
       </div> : 
@@ -89,9 +89,9 @@ export default function Orders() {
         
         return (
         //return a container for each order retrieved
-          <div key={i} className='border shadow m-5 rounded p-1 h-40'>
+          <div key={i} className='border shadow m-5 rounded p-1 h-10/12'>
 
-          <div className="flex column h-full font-Quicksand">
+          <div className="flex column h-full font-Quicksand flex-wrap">
 
             <div className=" w-2/4 h-full p-5">
               <h3 className="font-bold text-sm">Order ID:<span className="font-Quicksand text-xs font-normal"> {orderRecieved.id} </span></h3>
@@ -109,11 +109,10 @@ export default function Orders() {
             {/* pass the syle as a prop */}
               <div className="h-70  w-full p-5">
                 <Images style={orderRecieved.style}></Images>
-                
               </div>
 
-              <div className=" h-auto w-full h-30 ">
-              <Button className="w-full"><MdOutlineRemoveCircle onClick={() => deleteOrderFunc(orderRecieved.id)} className="uppercase h-5 flex font-Quicksand mx-auto text-white w-20"> </MdOutlineRemoveCircle></Button>
+              <div className=" h-auto w-full h-30">
+              <Button className="w-full rounded-[100px]"><MdOutlineRemoveCircle onClick={() => deleteOrderFunc(orderRecieved.id)} className="uppercase h-5 flex font-Quicksand mx-auto text-white w-20 text-center"></MdOutlineRemoveCircle></Button>
               </div>
             </div>
             
@@ -141,38 +140,5 @@ export default function Orders() {
 }
 
 
-const svgAnimation = () => {
 
-  return(
-    
-    <div>
-<svg version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-  viewBox="0 0 100 100" enable-background="new 0 0 0 0" xmlSpace="preserve">
-  <circle fill="#fff" stroke="none" cx="6" cy="50" r="6">
-    <animate
-      attributeName="opacity"
-      dur="1s"
-      values="0;1;0"
-      repeatCount="indefinite"
-      begin="0.1"/>    
-  </circle>
-  <circle fill="#fff" stroke="none" cx="26" cy="50" r="6">
-    <animate
-      attributeName="opacity"
-      dur="1s"
-      values="0;1;0"
-      repeatCount="indefinite" 
-      begin="0.2"/>       
-  </circle>
-  <circle fill="#fff" stroke="none" cx="46" cy="50" r="6">
-    <animate
-      attributeName="opacity"
-      dur="1s"
-      values="0;1;0"
-      repeatCount="indefinite" 
-      begin="0.3"/>     
-  </circle>
-</svg>
-    </div>
-  )
-}
+

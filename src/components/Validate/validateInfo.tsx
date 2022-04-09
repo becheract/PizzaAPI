@@ -29,7 +29,8 @@ export default function validateInfo(values : Order ) : ErrorsOptions {
     //address
     if(!values.address){
         errors.address = "Address required"
-        
+    }else if (values.address.length < 4){
+        errors.address = "Address must be more than 4 characters"
     }
     //crust
     if(!values.crust){

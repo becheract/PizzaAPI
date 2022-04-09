@@ -76,8 +76,9 @@ export default function useForm(callback : any,validateInfo : any ) {
 }
 
   useEffect(() => {
+      //if no errors and usestate is equal to true
     if(Object.keys(errors).length === 0 && isSubmitting) {
-        console.log(`inside function ${isSubmitting}`);
+        
         api.post('/orders', values)
         .then((res) => {
           if(res.status === 201) {
@@ -89,7 +90,7 @@ export default function useForm(callback : any,validateInfo : any ) {
             
         })
     }else if(Object.keys(errors).length > 0){
-        return alert("Please fill in values")
+        return ;
     }
   },[errors])
 

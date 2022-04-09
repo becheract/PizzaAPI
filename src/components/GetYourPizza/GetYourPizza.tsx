@@ -1,11 +1,8 @@
 import  {useState } from 'react'
 import '../../styles/App.css'
 import { connect  } from 'react-redux'
-
 import pizza from '../../assets/pizza.png'
 import {Button} from '../Button/Button'
-//modal 
-import ReactModal from 'react-modal';
 // hook 
 import useForm from '../Hooks/useForm';
 //validation
@@ -27,70 +24,6 @@ export const GetYourPizza = ({submitForm} : any) => {
   return (
   <form className="w-full max-w-lg mx-auto p-5 border-2  shadow-lg" onSubmit={handleSubmit}>
     <img src={pizza}  alt="Logo" className="w-1/5 h-45 mx-auto"/>
-    {/* modal will open and display saved
-    <ReactModal isOpen={saving} 
-    shouldCloseOnOverlayClick={true} 
-    ariaHideApp={false}
-    closeTimeoutMS={0.5}
-    style={ {  overlay: {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: 'rgba(255, 255, 255, 0.55)',
-      backdropFilter: 'blur( 3px )',
-      WebkitBackdropFilter: 'blur( 3px )',
-    },
-    content: {
-      display: 'flex',
-      margin: 'auto',
-      border: '1px solid #ccc',
-      background: 'rgba( 210, 191, 191, 0.3 )',
-      boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
-      overflow: 'auto',
-      borderRadius: '10px',
-      outline: 'none',
-      padding: '20px',
-      width: '200px',
-      height: '100px'
-    }
-    }}>
-      <p className='mx-auto my-auto font-Quicksand block tracking-wide text-gray-700 text-xs font-bold'>Order Recieved!</p>
-    </ReactModal> */}
-
-    {/* modal will open and display input values as empty
-    <ReactModal isOpen={emptyField} 
-    shouldCloseOnOverlayClick={true} 
-    ariaHideApp={false}
-    closeTimeoutMS={0.5}
-    style={ {  overlay: {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: 'rgba(255, 255, 255, 0.55)',
-      backdropFilter: 'blur( 3px )',
-      WebkitBackdropFilter: 'blur( 3px )',
-    },
-    content: {
-      display: 'flex',
-      margin: 'auto',
-      border: '1px solid #ccc',
-      background: 'rgba( 210, 191, 191, 0.3 )',
-      boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
-      overflow: 'auto',
-      borderRadius: '10px',
-      outline: 'none',
-      padding: '20px',
-      width: '200px',
-      height: '100px'
-    }
-    }}>
-      <p className='mx-auto my-auto font-Quicksand block tracking-wide text-gray-700 text-xs font-bold'>Empty Fields, please fill.</p>
-    </ReactModal> */}
-
       <div>
         <h1 className="p-5 font-light text-3xl text-SecondRed font-Nunito text-center">Get your Pizza</h1>
       </div>
