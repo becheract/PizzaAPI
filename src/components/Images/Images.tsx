@@ -31,10 +31,10 @@ export default function Images(props : style) {
             setPizzaImg(value)
         }
  
-    }, [])
+    })
 
 
     return (
-        <img src={pizzaImg}  alt="Pizza Icon" className="mx-auto w-10 "/>
+        <img src={pizzaImg}  alt="Pizza Icon" className="mx-auto w-10"/>
       )
 }
