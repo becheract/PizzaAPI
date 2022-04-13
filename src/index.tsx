@@ -19,7 +19,7 @@ ReactDOM.render(
     <BrowserRouter>
     <NavBar/>
       <Routes>
-        <Route path='/' element={<Home/>}></Route>
+        <Route path='/home' element={<Home/>}></Route>
         <Route path='/get-your-pizza' element={<Form/>}></Route>
         <Route path='/orders' element={<Orders/>}></Route>
       </Routes>
