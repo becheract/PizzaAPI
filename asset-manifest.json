@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/PizzaAPI/static/css/main.25931764.css",
-    "main.js": "/PizzaAPI/static/js/main.fe3c3466.js",
+    "main.js": "/PizzaAPI/static/js/main.5497ea12.js",
     "static/media/pizza.png": "/PizzaAPI/static/media/pizza.21a5d3e3f82353070ce4.png",
     "static/media/loading.gif": "/PizzaAPI/static/media/loading.107f6e4d0dd7e7c550fe.gif",
     "static/media/Pepperoni.png": "/PizzaAPI/static/media/Pepperoni.343a8c83e1b4586a6847.png",
     "index.html": "/PizzaAPI/index.html",
     "main.25931764.css.map": "/PizzaAPI/static/css/main.25931764.css.map",
-    "main.fe3c3466.js.map": "/PizzaAPI/static/js/main.fe3c3466.js.map"
+    "main.5497ea12.js.map": "/PizzaAPI/static/js/main.5497ea12.js.map"
   },
   "entrypoints": [
     "static/css/main.25931764.css",
-    "static/js/main.fe3c3466.js"
+    "static/js/main.5497ea12.js"
   ]
 }
