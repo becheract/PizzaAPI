@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import pizza from '../../assets/pizza.png'
 import {Button} from '../Button/Button'
+
 export default function Home() {
   return (
     <div className="container flex justify-center column w-screen mx-auto my-10">

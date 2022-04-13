@@ -10,6 +10,7 @@ import Form from './components/GetYourPizza/Form';
 import Orders from './components/Orders/Orders';
 import NavBar from './components/NavBar/NavBar';
 import 'flowbite';
+
 ReactDOM.render(
 
   <React.StrictMode>
@@ -18,7 +19,7 @@ ReactDOM.render(
     <BrowserRouter>
     <NavBar/>
       <Routes>
-        <Route path='/PizzaAPI' element={<Home/>}> </Route>
+        <Route path='/' element={<Home/>}></Route>
         <Route path='/get-your-pizza' element={<Form/>}></Route>
         <Route path='/orders' element={<Orders/>}></Route>
       </Routes>
